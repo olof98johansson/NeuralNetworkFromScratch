@@ -1,10 +1,18 @@
 <h1 align="center"> Quick explanation</h1>
 
-Performing binary classification with the network from [NeuralNetwork.py](https://github.com/olof98johansson/NeuralNetworkFromScratch/blob/main/NeuralNetwork.py) file where an arbitrary architecture (depth and width) can be selected. The data consists of one 2D training set of <i>s<sub>t</sub> = 10000</i> data points of <i><b>x</b><sub>i</sub>&in; <b>R</b><sup>2</sup></i> for <i>i=1,...,s</i> with corresponding target labels <i>t = &pm; 1</i> evaluated on a validation set of <i>s<sub>v</sub> = 5000</i> and one 3D training set of <i>s<sub>t</sub> = 12000</i> data points with corresponding validation set <i>s<sub>v</sub>=6000</i> with same target labels. The classification error is defined as
+Performing binary classification with the network from [NeuralNetwork.py](https://github.com/olof98johansson/NeuralNetworkFromScratch/blob/main/NeuralNetwork.py) file where an arbitrary architecture (depth and width) can be selected. The data consists of one 2D training set of <i>s<sub>t</sub> = 10000</i> data points of <i><b>x</b><sub>i</sub>&in; <b>R</b><sup>2</sup></i> for <i>i=1,...,s</i> with corresponding target labels <i>t = &pm; 1</i> evaluated on a validation set of <i>s<sub>v</sub> = 5000</i> and one 3D training set of <i>s<sub>t</sub> = 12000</i> data points with corresponding validation set <i>s<sub>v</sub>=6000</i> with same target labels. 
+
+To run and test the network on the pre-defined configuration and data, just type
+
+```
+python run.py
+```
+
+The classification error is defined as
 <p align="center"><a href="https://www.codecogs.com/eqnedit.php?latex=\mathcal{C}&space;=&space;\frac{1}{2s}\sum_{\mu=1}^{s}\left|\text{sgn}\left(\mathcal{O}^{(\mu)}\right)&space;-&space;t^{(\mu)}\right|" target="_blank"><img src="https://latex.codecogs.com/png.latex?\mathcal{C}&space;=&space;\frac{1}{2s}\sum_{\mu=1}^{s}\left|\text{sgn}\left(\mathcal{O}^{(\mu)}\right)&space;-&space;t^{(\mu)}\right|" title="\mathcal{C} = \frac{1}{2s}\sum_{\mu=1}^{s}\left|\text{sgn}\left(\mathcal{O}^{(\mu)}\right) - t^{(\mu)}\right|" /></a></p>
 
 
-where <i><b>0</b></i> is the output of the network and <i>s</i> the size of the dataset. Furthermore are the tanh function used as activation functions with a local field such that the output of node <i>i</i> in layer <i>l</i> for input <i>&mu;</i> is defined as
+where <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\dpi{80}&space;\mathcal{O}" target="_blank"><img src="https://latex.codecogs.com/png.latex?\inline&space;\dpi{80}&space;\mathcal{O}" title="\mathcal{O}" /></a> is the output of the network and <i>s</i> the size of the dataset. Furthermore are the tanh function used as activation functions with a local field such that the output of node <i>i</i> in layer <i>l</i> for input <i>&mu;</i> is defined as
 <p align="center"><a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\tiny&space;V_i^{(l,\mu)}&space;=&space;\tanh\left(\sum_{j=1}^{M_l}w_{ij}^{(l)}V_j^{(l-1,&space;\mu)}&space;-&space;\theta_i^{(l)}\right)&space;\longrightarrow&space;\mathbf{V}^{(l,\mu)}&space;=&space;\tanh\bigg(\mathbf{W}^{(l)}\mathbf{V}^{(l-1,&space;\mu)}&space;-&space;\mathbf{\Theta}^{(l)}\bigg)" target="_blank"><img src="https://latex.codecogs.com/png.latex?\dpi{200}&space;\tiny&space;V_i^{(l,\mu)}&space;=&space;\tanh\left(\sum_{j=1}^{M_l}w_{ij}^{(l)}V_j^{(l-1,&space;\mu)}&space;-&space;\theta_i^{(l)}\right)&space;\longrightarrow&space;\mathbf{V}^{(l,\mu)}&space;=&space;\tanh\bigg(\mathbf{W}^{(l)}\mathbf{V}^{(l-1,&space;\mu)}&space;-&space;\mathbf{\Theta}^{(l)}\bigg)" title="\tiny V_i^{(l,\mu)} = \tanh\left(\sum_{j=1}^{M_l}w_{ij}^{(l)}V_j^{(l-1, \mu)} - \theta_i^{(l)}\right) \longrightarrow \mathbf{V}^{(l,\mu)} = \tanh\bigg(\mathbf{W}^{(l)}\mathbf{V}^{(l-1, \mu)} - \mathbf{\Theta}^{(l)}\bigg)" /></a></p>
 
 
