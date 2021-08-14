@@ -187,6 +187,7 @@ class Network(object):
             pred_labels.append(val_pred)
 
         c_error = (1 / (2 * len(val_labels))) * sum(np.abs(np.squeeze(pred_labels) - val_labels))
+        pred_labels = [pl[0] for pl in pred_labels]
         if self.input_size == 2:
             x1 = [row[0] for row in val_inputs]
             x2 = [row[1] for row in val_inputs]
