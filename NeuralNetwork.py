@@ -4,13 +4,14 @@ import plotly.express as px
 import time
 import random
 
+
 class Logger(object):
-    def __init__(self, epochs = None):
+    def __init__(self, epochs=None):
 
         self.init_time = time.time()
         self.epochs = epochs
 
-    def update(self, epoch, error, val_error = None):
+    def update(self, epoch, error, val_error=None):
         elapsed_time = time.time() - self.init_time
         tim = 'seconds'
         if elapsed_time > 60 and elapsed_time <= 3600:
@@ -23,8 +24,8 @@ class Logger(object):
         if val_error == None:
             print(f'Elapsed time: {elapsed_time} {tim}\tEpoch: {epoch}/{self.epochs}\tTraining error: {error:.3f}')
         else:
-            print(f'Elapsed time: {elapsed_time} {tim}\tEpoch: {epoch}/{self.epochs}\tTraining error: {error:.3f}\tValidation error: {val_error:.3f}')
-
+            print(
+                f'Elapsed time: {elapsed_time} {tim}\tEpoch: {epoch}/{self.epochs}\tTraining error: {error:.3f}\tValidation error: {val_error:.3f}')
 
 
 class Network(object):
@@ -119,7 +120,7 @@ class Network(object):
     def train(self, inputs, labels, val_inputs=None, val_labels=None, validate=False):
 
         errors, val_errors = [], []
-        logger = Logger(epochs = self.epochs)
+        logger = Logger(epochs=self.epochs)
         for epoch in range(self.epochs):
             idx = np.arange(len(labels))
             random.shuffle(idx)
@@ -193,7 +194,7 @@ class Network(object):
             fig = px.scatter(x=x1, y=x2,
                              color=np.array(pred_labels),
                              opacity=0.7,
-                             color_continuous_scale = px.colors.sequential.Plotly3)
+                             color_continuous_scale=px.colors.sequential.Plotly3)
             fig.update(layout_coloraxis_showscale=False)
 
             fig.update_traces(marker=dict(size=12,
@@ -215,9 +216,9 @@ class Network(object):
             x3 = [row[2] for row in val_inputs]
 
             fig = px.scatter_3d(x=x1, y=x2, z=x3,
-                                color = np.array(pred_labels),
+                                color=np.array(pred_labels),
                                 opacity=0.7,
-                                color_continuous_scale = px.colors.sequential.Plotly3)
+                                color_continuous_scale=px.colors.sequential.Plotly3)
             fig.update(layout_coloraxis_showscale=False)
 
             fig.update_traces(marker=dict(size=9,
@@ -235,9 +236,6 @@ class Network(object):
             fig.show('png')
         else:
             print(f'Classification error for the validation set evaluated to: {c_error:.3f}')
-
-
-
 
     # Visualization of training and/or validation progress
     def plot_errors(self, training_errors, validation_errors=None, validate=False):
